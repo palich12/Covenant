@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipMap", "ShipMap\ShipMap.csproj", "{90942665-8C8A-49DD-807A-4183EC923889}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipMapDemo", "ShipMapDemo\ShipMapDemo.csproj", "{2B7A8FF9-37D5-4388-82D8-25554CB95665}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90942665-8C8A-49DD-807A-4183EC923889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90942665-8C8A-49DD-807A-4183EC923889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90942665-8C8A-49DD-807A-4183EC923889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90942665-8C8A-49DD-807A-4183EC923889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B7A8FF9-37D5-4388-82D8-25554CB95665}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B7A8FF9-37D5-4388-82D8-25554CB95665}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B7A8FF9-37D5-4388-82D8-25554CB95665}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B7A8FF9-37D5-4388-82D8-25554CB95665}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://smeon.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ShipMap\\ShipMap.csproj
+		SccProjectName1 = ShipMap
+		SccLocalPath1 = ShipMap
+		SccProjectUniqueName2 = ShipMapDemo\\ShipMapDemo.csproj
+		SccProjectName2 = ShipMapDemo
+		SccLocalPath2 = ShipMapDemo
+	EndGlobalSection
+EndGlobal
