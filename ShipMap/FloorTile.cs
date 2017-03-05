@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShipMap
 {
-    public class Class1
+    public class FloorTile : ShipElement
     {
     }
 }
