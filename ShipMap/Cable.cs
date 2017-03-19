@@ -8,24 +8,18 @@ namespace ShipMap
 {
     public class Cable : Communication
     {
-        protected override Communication GetBottomCommunication()
+        public Cable(ShipMap map, int x, int y) : base(map, x, y)
         {
-            throw new NotImplementedException();
         }
 
-        protected override Communication GetLeftCommunication()
+        protected override ShipElement GetShipElement(ShipMapCell cell)
         {
-            throw new NotImplementedException();
+            return cell.StandCable;
         }
 
-        protected override Communication GetRightCommunication()
+        protected override void SetShipElement(ShipMapCell cell, ShipElement element)
         {
-            throw new NotImplementedException();
-        }
-
-        protected override Communication GetTopCommunication()
-        {
-            throw new NotImplementedException();
+            cell.StandCable = (Cable)element;
         }
     }
 }

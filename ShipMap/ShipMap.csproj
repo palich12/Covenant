@@ -47,6 +47,7 @@
     <Compile Include="AirPipe.cs" />
     <Compile Include="Cable.cs" />
     <Compile Include="Communication.cs" />
+    <Compile Include="CommunicationBus.cs" />
     <Compile Include="DeckObject.cs" />
     <Compile Include="FloorTile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

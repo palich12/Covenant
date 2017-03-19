@@ -8,24 +8,23 @@ namespace ShipMap
 {
     public class AirPipe : Communication
     {
-        protected override Communication GetBottomCommunication()
+        public AirPipe(ShipMap map, int x, int y) : base(map, x, y)
+        {
+        }
+
+        public override void Destroy()
         {
             throw new NotImplementedException();
         }
 
-        protected override Communication GetLeftCommunication()
+        protected override ShipElement GetShipElement(ShipMapCell cell)
         {
-            throw new NotImplementedException();
+            return cell.StandAirPipe;
         }
 
-        protected override Communication GetRightCommunication()
+        protected override void SetShipElement(ShipMapCell cell, ShipElement element)
         {
-            throw new NotImplementedException();
-        }
-
-        protected override Communication GetTopCommunication()
-        {
-            throw new NotImplementedException();
+            cell.StandAirPipe = (AirPipe)element;
         }
     }
 }
