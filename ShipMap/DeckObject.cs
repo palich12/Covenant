@@ -14,11 +14,8 @@ public enum RotateAngle : int
 
 namespace ShipMap
 {
-    public class DeckObject : ShipElement
+    public abstract class DeckObject : ShipElement
     {
-        public int X;
-
-        public int Y;
 
         public int Height;
 
@@ -29,6 +26,11 @@ namespace ShipMap
         public bool isReflectedbyY;
 
         public RotateAngle Rotate;
+
+        public DeckObject(ShipMap map, int x, int y) : base(map, x, y)
+        {
+
+        }
 
         public bool isGasPenetration(ShipMapCell cell)
         {
