@@ -32,21 +32,20 @@ namespace ShipMap
             return (Communication)GetShipElement(Map.GetCell(X, Y + 1));
         }
 
-        public void CheckConnection()
-        {
-            CheckConnectionRec(this, new CommunicationBus());
-        }
-
         private void ChangeBus( CommunicationBus bus )
         {
             Bus.Communications.Remove(this);
             bus.Communications.Add(this);
             Bus = bus;
         }
+        public void CheckConnection()
+        {
+            CheckConnectionRec(this, new CommunicationBus());
+        }
 
         private void CheckConnectionRec(Communication com, CommunicationBus newBus)
         {
-            if (com == null)
+            if (com == null || newBus == null || com.Bus == newBus)
                 return;
 
             com.ChangeBus(newBus);

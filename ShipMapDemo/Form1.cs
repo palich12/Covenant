@@ -15,6 +15,9 @@ namespace ShipMapDemo
         public Form1()
         {
             InitializeComponent();
+            var row = new DataGridViewRow();
+            shipMap.ColumnCount = 50;
+            shipMap.Rows.Add(100);
         }
     }
 }
