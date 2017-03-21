@@ -8,13 +8,13 @@ namespace ShipMap
 {
     public class ShipMapCell
     {
-        public FloorTile Deck;
+        public FloorTile Deck { get; set; }
 
-        public DeckObject StandObject;
+        public DeckObject StandObject { get; set; }
 
-        public Cable StandCable;
+        public Cable StandCable { get; set; }
 
-        public AirPipe StandAirPipe;
+        public AirPipe StandAirPipe { get; set; }
 
 
 
