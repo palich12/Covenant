@@ -8,13 +8,8 @@ namespace ShipMap
 {
     public class AirPipe : Communication
     {
-        public AirPipe(ShipMap map, int x, int y) : base(map, x, y)
+        public AirPipe(ShipMap map) : base(map)
         {
-        }
-
-        public override void Destroy()
-        {
-            throw new NotImplementedException();
         }
 
         protected override ShipElement GetShipElement(ShipMapCell cell)

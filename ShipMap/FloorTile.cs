@@ -8,13 +8,8 @@ namespace ShipMap
 {
     public class FloorTile : ShipElement
     {
-        public FloorTile(ShipMap map, int x, int y) : base(map, x, y)
+        public FloorTile(ShipMap map) : base(map, 1, 1)
         {
-        }
-
-        public override void Destroy()
-        {
-            throw new NotImplementedException();
         }
 
         protected override ShipElement GetShipElement(ShipMapCell cell)

@@ -54,6 +54,7 @@
     <Compile Include="ShipElement.cs" />
     <Compile Include="ShipMap.cs" />
     <Compile Include="ShipMapCell.cs" />
+    <Compile Include="Tile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

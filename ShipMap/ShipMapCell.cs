@@ -8,6 +8,10 @@ namespace ShipMap
 {
     public class ShipMapCell
     {
+        public int X { get; private set; }
+
+        public int Y { get; private set; }
+
         public FloorTile Deck { get; set; }
 
         public DeckObject StandObject { get; set; }
@@ -17,6 +21,11 @@ namespace ShipMap
         public AirPipe StandAirPipe { get; set; }
 
 
+        public ShipMapCell(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
 
         public bool isGasPenetration()
         {

@@ -17,27 +17,27 @@ namespace ShipMap
     public abstract class DeckObject : ShipElement
     {
 
-        public int Height;
-
-        public int Width;
-
-        public bool isReflectedbyX;
-
-        public bool isReflectedbyY;
-
-        public RotateAngle Rotate;
-
-        public DeckObject(ShipMap map, int x, int y) : base(map, x, y)
+        public DeckObject(ShipMap map, int width, int height) : base(map, width, height)
         {
 
         }
 
-        public bool isGasPenetration(ShipMapCell cell)
+        protected override ShipElement GetShipElement(ShipMapCell cell)
+        {
+            return cell.StandObject;
+        }
+
+        protected override void SetShipElement(ShipMapCell cell, ShipElement element)
+        {
+            cell.StandObject = (DeckObject)element;
+        }
+
+        public virtual bool isGasPenetration(int x, int y)
         {
             return false;
         }
 
-        public bool isPassable(ShipMapCell cell)
+        public virtual bool isPassable(int x, int y)
         {
             return false;
         }
