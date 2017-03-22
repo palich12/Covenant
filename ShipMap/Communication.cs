@@ -10,7 +10,7 @@ namespace ShipMap
     {
         internal CommunicationBus Bus { get; set; }
 
-        public Communication(ShipMap map, int x, int y) :base(map, x, y)
+        public Communication(ShipMap map) :base(map, 1, 1)
         {
             CheckConnection();
         }
@@ -34,7 +34,10 @@ namespace ShipMap
 
         private void ChangeBus( CommunicationBus bus )
         {
-            Bus.Communications.Remove(this);
+            if( Bus != null )
+                Bus.Communications.Remove(this);
+            if (bus == null)
+                bus = new CommunicationBus();
             bus.Communications.Add(this);
             Bus = bus;
         }
@@ -55,9 +58,9 @@ namespace ShipMap
             CheckConnectionRec(com.GetBottomCommunication(), newBus);
         }
 
-        public override void Destroy()
+        public override void Remove()
         {
-            base.Destroy();
+            base.Remove();
             CheckConnectionRec(this.GetLeftCommunication(),   new CommunicationBus());
             CheckConnectionRec(this.GetRightCommunication(),  new CommunicationBus());
             CheckConnectionRec(this.GetTopCommunication(),    new CommunicationBus());

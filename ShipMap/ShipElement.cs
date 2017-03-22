@@ -14,32 +14,92 @@ namespace ShipMap
             protected set;
         }
 
-        public ShipMap Map { get; private set; }
+        public bool IsSetup { get; private set; }
+
+        protected ShipMap Map { get; set; }
         public int X { get; private set; }
         public int Y { get; private set; }
 
-        public ShipElement( ShipMap map, int x, int y)
+        private int _Height { get; set; } 
+        public int Height
+        {
+            get
+            {
+                return Rotate == RotateAngle.angle0 || Rotate == RotateAngle.angle180 ? _Height : _Width;
+            }
+        }
+
+        private int _Width { get; set; }
+        public int Width
+        {
+            get
+            {
+                return Rotate == RotateAngle.angle0 || Rotate == RotateAngle.angle180 ? _Width : _Height;
+            }
+        }
+
+        public bool IsReflectedByX { get; private set; }
+
+        public bool IsReflectedByY { get; private set; }
+
+        public RotateAngle Rotate { get; private set; }
+
+        public ShipElement( ShipMap map, int width, int height)
         {
             if( map == null)
             {
                 throw (new Exception("Can't create ShipElement without ShipMap"));
             }
             Map = map;
-            X = x;
-            Y = y;
-            if (Map.GetCell(X, Y) == null)
-            {
-                throw (new Exception("X or Y out of range in ShipMap"));
-            }
+            _Width = width;
+            _Height = height;
+
         }
 
         protected abstract ShipElement GetShipElement(ShipMapCell cell);
 
         protected abstract void SetShipElement(ShipMapCell cell, ShipElement element);
 
-        public virtual void Destroy()
+        public bool Setup(int x, int y, RotateAngle rotate, bool isreflectedbyx, bool isreflectedbyy)
         {
-            SetShipElement(Map.GetCell(X, Y), null);
+            X = x;
+            Y = y;
+            IsReflectedByX = isreflectedbyx;
+            IsReflectedByY = isreflectedbyy;
+            Rotate = rotate;
+
+            if (x < 0 || y < 0 || Map.Width <= X + Width || Map.Heigth <= Y + Height)
+                return false;
+
+            for (int i = 0; i < Width; i++)
+            {
+                for (int j = 0; j < Height; j++)
+                {
+                    if (GetShipElement(Map.GetCell(X + i, Y + j)) != null)
+                        return false;
+                }
+            }
+
+            for (int i = 0; i < Width; i++)
+            {
+                for (int j = 0; j < Height; j++)
+                {
+                    SetShipElement(Map.GetCell(X + i, Y + j), this);
+                }
+            }
+            return true;
+        }
+
+        public virtual void Remove()
+        {
+            IsSetup = false;
+            for (int i = 0; i < Width; i++)
+            {
+                for (int j = 0; j < Height; j++)
+                {
+                    SetShipElement(Map.GetCell(X+i, Y+j), null);
+                }
+            }
         }
     }
 }

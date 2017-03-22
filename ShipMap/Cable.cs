@@ -8,7 +8,7 @@ namespace ShipMap
 {
     public class Cable : Communication
     {
-        public Cable(ShipMap map, int x, int y) : base(map, x, y)
+        public Cable(ShipMap map) : base(map)
         {
         }
 
