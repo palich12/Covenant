@@ -17,13 +17,17 @@ namespace ShipMap
     public abstract class DeckObject : ShipElement
     {
 
+        public List<Port> Ports { get; private set; }
+
         public DeckObject(ShipMap map, int width, int height) : base(map, width, height)
         {
-
+            Ports = new List<Port>();
         }
 
         protected override ShipElement GetShipElement(ShipMapCell cell)
         {
+            if (cell == null)
+                return null;
             return cell.StandObject;
         }
 

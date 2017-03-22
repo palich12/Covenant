@@ -14,6 +14,8 @@ namespace ShipMap
 
         protected override ShipElement GetShipElement(ShipMapCell cell)
         {
+            if (cell == null)
+                return null;
             return cell.Deck;
         }
 

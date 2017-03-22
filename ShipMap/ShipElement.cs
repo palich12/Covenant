@@ -60,15 +60,14 @@ namespace ShipMap
 
         protected abstract void SetShipElement(ShipMapCell cell, ShipElement element);
 
-        public bool Setup(int x, int y, RotateAngle rotate, bool isreflectedbyx, bool isreflectedbyy)
+        public virtual bool CheckSetupPossible(
+            int x,
+            int y,
+            RotateAngle rotate = RotateAngle.angle0,
+            bool isreflectedbyx = false,
+            bool isreflectedbyy = false)
         {
-            X = x;
-            Y = y;
-            IsReflectedByX = isreflectedbyx;
-            IsReflectedByY = isreflectedbyy;
-            Rotate = rotate;
-
-            if (x < 0 || y < 0 || Map.Width <= X + Width || Map.Heigth <= Y + Height)
+            if (x < 0 || y < 0 || Map.Width <= x + Width || Map.Heigth <= y + Height)
                 return false;
 
             for (int i = 0; i < Width; i++)
@@ -79,6 +78,27 @@ namespace ShipMap
                         return false;
                 }
             }
+            return true;
+        }
+
+        public virtual bool Setup(
+            int x, 
+            int y, 
+            RotateAngle rotate = RotateAngle.angle0, 
+            bool isreflectedbyx = false, 
+            bool isreflectedbyy = false)
+        {
+            if(! CheckSetupPossible(x, y, rotate, isreflectedbyx, isreflectedbyy))
+            {
+                return false;
+            }
+
+            X = x;
+            Y = y;
+            IsReflectedByX = isreflectedbyx;
+            IsReflectedByY = isreflectedbyy;
+            Rotate = rotate;
+
 
             for (int i = 0; i < Width; i++)
             {

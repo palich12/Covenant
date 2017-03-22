@@ -20,6 +20,8 @@ namespace ShipMap
 
         public AirPipe StandAirPipe { get; set; }
 
+        public double Pressure { get; set; }
+
 
         public ShipMapCell(int x, int y)
         {
@@ -44,6 +46,26 @@ namespace ShipMap
             res += StandCable == null ? 0 : StandCable.Price;
             res += StandAirPipe == null ? 0 : StandAirPipe.Price;
             return res;
+        }
+
+        public void Clean()
+        {
+            if(StandObject != null)
+            {
+                StandObject.Remove();
+            }
+            if (Deck != null)
+            {
+                Deck.Remove();
+            }
+            if (StandAirPipe != null)
+            {
+                StandAirPipe.Remove();
+            }
+            if (StandObject != null)
+            {
+                StandCable.Remove();
+            }
         }
     }
 }

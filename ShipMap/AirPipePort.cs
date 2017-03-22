@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ShipMap
 {
-    public class Tile : DeckObject
+    class AirPipePort : Port
     {
-        public Tile(ShipMap map) : base(map, 1, 1)
+        public AirPipePort(int relativex, int relativey) : base(relativex, relativey)
         {
         }
     }
