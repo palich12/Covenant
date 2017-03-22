@@ -44,17 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirGenerator.cs" />
     <Compile Include="AirPipe.cs" />
+    <Compile Include="AirPipePort.cs" />
     <Compile Include="Cable.cs" />
+    <Compile Include="CablePort.cs" />
     <Compile Include="Communication.cs" />
     <Compile Include="CommunicationBus.cs" />
     <Compile Include="DeckObject.cs" />
     <Compile Include="FloorTile.cs" />
+    <Compile Include="Port.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShipElement.cs" />
     <Compile Include="ShipMap.cs" />
     <Compile Include="ShipMapCell.cs" />
     <Compile Include="Tile.cs" />
+    <Compile Include="Ventipane.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

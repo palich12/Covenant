@@ -91,35 +91,35 @@ namespace ShipMapDemo
         private void addTile_Click(object sender, EventArgs e)
         {
             var cell = GetSelectedCell();
-            cell.StandObject = new Tile(Map);
+            new Tile(Map).Setup(cell.X, cell.Y);
             DrawSelectedCell();
         }
 
         private void addDeck_Click(object sender, EventArgs e)
         {
             var cell = GetSelectedCell();
-            cell.Deck = new FloorTile(Map);
+            new FloorTile(Map).Setup(cell.X, cell.Y);
             DrawSelectedCell();
         }
 
         private void addCable_Click(object sender, EventArgs e)
         {
             var cell = GetSelectedCell();
-            cell.StandCable = new Cable(Map);
+            new Cable(Map).Setup(cell.X, cell.Y);
             DrawSelectedCell();
         }
 
         private void addAirPipe_Click(object sender, EventArgs e)
         {
             var cell = GetSelectedCell();
-            cell.StandAirPipe = new AirPipe(Map);
+            new AirPipe(Map).Setup(cell.X, cell.Y);
             DrawSelectedCell();
         }
 
         private void cleanCell_Click(object sender, EventArgs e)
         {
             var cell = GetSelectedCell();
-            cell.StandAirPipe = new AirPipe(Map);
+            cell.Clean();
             DrawSelectedCell();
         }
     }
