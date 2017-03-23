@@ -8,14 +8,11 @@ namespace ShipMap
 {
     public class Port
     {
-        public int RelativeX {get; private set;}
+        public Point RelativePosition {get; private set;}
 
-        public int RelativeY { get; private set; }
-
-        public Port( int relativex, int relativey)
+        public Port( Point relativeposition)
         {
-            RelativeX = relativex;
-            RelativeY = relativey;
+            RelativePosition = relativeposition;
         }
     }
 }

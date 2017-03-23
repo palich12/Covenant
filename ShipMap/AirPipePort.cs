@@ -8,7 +8,7 @@ namespace ShipMap
 {
     class AirPipePort : Port
     {
-        public AirPipePort(int relativex, int relativey) : base(relativex, relativey)
+        public AirPipePort(Point relativeposition) : base(relativeposition)
         {
         }
     }

@@ -12,24 +12,34 @@ namespace ShipMap
 
         public Communication(ShipMap map) :base(map, 1, 1)
         {
-            CheckConnection();
+            
+        }
+
+        public override bool Setup(Point position, RotateAngle rotate = RotateAngle.angle0, bool isreflectedbyx = false, bool isreflectedbyy = false)
+        {
+            if( base.Setup(position, rotate, isreflectedbyx, isreflectedbyy))
+            {
+                CheckConnection();
+                return true;
+            }
+            return false;
         }
 
         internal Communication GetLeftCommunication()
         {
-            return (Communication)GetShipElement(Map.GetCell(X-1,Y));
+            return (Communication)GetShipElement(Map.GetCell(new Point(Position.X-1, Position.Y)));
         }
         internal Communication GetRightCommunication()
         {
-            return (Communication)GetShipElement(Map.GetCell(X + 1, Y));
+            return (Communication)GetShipElement(Map.GetCell(new Point(Position.X + 1, Position.Y)));
         }
         internal Communication GetTopCommunication()
         {
-            return (Communication)GetShipElement(Map.GetCell(X, Y-1));
+            return (Communication)GetShipElement(Map.GetCell(new Point(Position.X, Position.Y -1)));
         }
         internal Communication GetBottomCommunication()
         {
-            return (Communication)GetShipElement(Map.GetCell(X, Y + 1));
+            return (Communication)GetShipElement(Map.GetCell(new Point(Position.X, Position.Y + 1)));
         }
 
         private void ChangeBus( CommunicationBus bus )

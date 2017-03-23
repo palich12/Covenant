@@ -28,13 +28,13 @@ namespace ShipMapDemo
             shipMap.Rows.Add(heigth);
         }
 
-        public void DrawCell( int x, int y )
+        public void DrawCell(ShipMap.Point position )
         {
-            var cell   = Map.GetCell(x,y);
-            var canvas = shipMap.Rows[y].Cells[x];
+            var cell   = Map.GetCell(position);
+            var canvas = shipMap.Rows[position.Y].Cells[position.X];
             if ( cell.StandObject != null)
             {
-                canvas.Style.BackColor = Color.Gray;
+                 canvas.Style.BackColor = cell.StandObject is Tile ?  Color.Gray : Color.Yellow;
             }
             else if ( cell.Deck != null )
             {
@@ -69,13 +69,13 @@ namespace ShipMapDemo
         {
             if (shipMap.SelectedCells.Count == 0)
                 return null;
-            return Map.GetCell( shipMap.SelectedCells[0].ColumnIndex, shipMap.SelectedCells[0].RowIndex);
+            return Map.GetCell( new ShipMap.Point(shipMap.SelectedCells[0].ColumnIndex, shipMap.SelectedCells[0].RowIndex));
         }
 
         public ShipMapCell DrawSelectedCell()
         {
             var cell = GetSelectedCell();
-            DrawCell( cell.X, cell.Y );
+            DrawCell( cell.Position );
             return cell;
         }
 
@@ -91,28 +91,28 @@ namespace ShipMapDemo
         private void addTile_Click(object sender, EventArgs e)
         {
             var cell = GetSelectedCell();
-            new Tile(Map).Setup(cell.X, cell.Y);
+            new Tile(Map).Setup(cell.Position);
             DrawSelectedCell();
         }
 
         private void addDeck_Click(object sender, EventArgs e)
         {
             var cell = GetSelectedCell();
-            new FloorTile(Map).Setup(cell.X, cell.Y);
+            new FloorTile(Map).Setup(cell.Position);
             DrawSelectedCell();
         }
 
         private void addCable_Click(object sender, EventArgs e)
         {
             var cell = GetSelectedCell();
-            new Cable(Map).Setup(cell.X, cell.Y);
+            new Cable(Map).Setup(cell.Position);
             DrawSelectedCell();
         }
 
         private void addAirPipe_Click(object sender, EventArgs e)
         {
             var cell = GetSelectedCell();
-            new AirPipe(Map).Setup(cell.X, cell.Y);
+            new AirPipe(Map).Setup(cell.Position);
             DrawSelectedCell();
         }
 

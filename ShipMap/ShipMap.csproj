@@ -54,6 +54,7 @@
     <Compile Include="DeckObject.cs" />
     <Compile Include="FloorTile.cs" />
     <Compile Include="Port.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShipElement.cs" />
     <Compile Include="ShipMap.cs" />

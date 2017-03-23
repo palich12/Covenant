@@ -10,7 +10,7 @@ namespace ShipMap
     {
         public Ventipane(ShipMap map) : base(map, 1, 1)
         {
-            Ports.Add(new AirPipePort(0, 0));
+            Ports.Add(new AirPipePort(new Point(0,0)));
         }
     }
 }

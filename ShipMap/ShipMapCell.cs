@@ -8,9 +8,7 @@ namespace ShipMap
 {
     public class ShipMapCell
     {
-        public int X { get; private set; }
-
-        public int Y { get; private set; }
+        public Point Position { get; private set; }
 
         public FloorTile Deck { get; set; }
 
@@ -23,10 +21,9 @@ namespace ShipMap
         public double Pressure { get; set; }
 
 
-        public ShipMapCell(int x, int y)
+        public ShipMapCell(Point position)
         {
-            X = x;
-            Y = y;
+            Position = position;
         }
 
         public bool isGasPenetration()
@@ -62,7 +59,7 @@ namespace ShipMap
             {
                 StandAirPipe.Remove();
             }
-            if (StandObject != null)
+            if (StandCable != null)
             {
                 StandCable.Remove();
             }

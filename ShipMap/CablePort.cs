@@ -8,7 +8,7 @@ namespace ShipMap
 {
     class CablePort : Port
     {
-        public CablePort(int relativex, int relativey) : base(relativex, relativey)
+        public CablePort(Point relativeposition) : base(relativeposition)
         {
         }
     }

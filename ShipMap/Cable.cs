@@ -21,6 +21,8 @@ namespace ShipMap
 
         protected override void SetShipElement(ShipMapCell cell, ShipElement element)
         {
+            if (cell == null)
+                return;
             cell.StandCable = (Cable)element;
         }
     }

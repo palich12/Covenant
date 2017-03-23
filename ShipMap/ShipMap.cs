@@ -21,17 +21,16 @@ namespace ShipMap
             Map = new ShipMapCell[width, heigth];
             for( int i = 0; i < Map.Length; i ++)
             {
-                int x = i % Map.GetLength(0);
-                int y = i / Map.GetLength(0);
-                Map[x, y] = new ShipMapCell(x,y);
+                var p = new Point(i % Map.GetLength(0), i / Map.GetLength(0));
+                Map[p.X, p.Y] = new ShipMapCell(p);
             }
         }
 
-        public ShipMapCell GetCell(int x, int y)
+        public ShipMapCell GetCell(Point position)
         {
-            if (x < 0 || y < 0 || Map.GetLength(0) <= x || Map.GetLength(1) <= y)
+            if (position.X < 0 || position.Y < 0 || Map.GetLength(0) <= position.X || Map.GetLength(1) <= position.Y)
                 return null;
-            return Map[x, y];
+            return Map[position.X, position.Y];
         }
         public bool CleanCell(int x, int y)
         {
@@ -39,6 +38,11 @@ namespace ShipMap
                 return false;
             
             return true;
+        }
+
+        internal ShipMapCell GetCell(Point point, object p)
+        {
+            throw new NotImplementedException();
         }
     }
 }

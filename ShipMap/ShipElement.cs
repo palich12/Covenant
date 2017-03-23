@@ -17,8 +17,7 @@ namespace ShipMap
         public bool IsSetup { get; private set; }
 
         protected ShipMap Map { get; set; }
-        public int X { get; private set; }
-        public int Y { get; private set; }
+        public Point Position { get; private set; }
 
         private int _Height { get; set; } 
         public int Height
@@ -61,20 +60,19 @@ namespace ShipMap
         protected abstract void SetShipElement(ShipMapCell cell, ShipElement element);
 
         public virtual bool CheckSetupPossible(
-            int x,
-            int y,
+            Point position,
             RotateAngle rotate = RotateAngle.angle0,
             bool isreflectedbyx = false,
             bool isreflectedbyy = false)
         {
-            if (x < 0 || y < 0 || Map.Width <= x + Width || Map.Heigth <= y + Height)
+            if (position.X < 0 || position.Y < 0 || Map.Width <= position.X + Width || Map.Heigth <= position.Y + Height)
                 return false;
 
             for (int i = 0; i < Width; i++)
             {
                 for (int j = 0; j < Height; j++)
                 {
-                    if (GetShipElement(Map.GetCell(X + i, Y + j)) != null)
+                    if (GetShipElement(Map.GetCell(new Point( position.X + i, position.Y + j))) != null)
                         return false;
                 }
             }
@@ -82,19 +80,17 @@ namespace ShipMap
         }
 
         public virtual bool Setup(
-            int x, 
-            int y, 
+            Point position,
             RotateAngle rotate = RotateAngle.angle0, 
             bool isreflectedbyx = false, 
             bool isreflectedbyy = false)
         {
-            if(! CheckSetupPossible(x, y, rotate, isreflectedbyx, isreflectedbyy))
+            if(! CheckSetupPossible(position, rotate, isreflectedbyx, isreflectedbyy))
             {
                 return false;
             }
 
-            X = x;
-            Y = y;
+            Position = position;
             IsReflectedByX = isreflectedbyx;
             IsReflectedByY = isreflectedbyy;
             Rotate = rotate;
@@ -104,7 +100,7 @@ namespace ShipMap
             {
                 for (int j = 0; j < Height; j++)
                 {
-                    SetShipElement(Map.GetCell(X + i, Y + j), this);
+                    SetShipElement(Map.GetCell(new Point( Position.X + i, Position.Y + j)), this);
                 }
             }
             return true;
@@ -117,7 +113,7 @@ namespace ShipMap
             {
                 for (int j = 0; j < Height; j++)
                 {
-                    SetShipElement(Map.GetCell(X+i, Y+j), null);
+                    SetShipElement(Map.GetCell(new Point( Position.X +i, Position.Y +j)), null);
                 }
             }
         }
