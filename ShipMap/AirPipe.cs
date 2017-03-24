@@ -10,6 +10,7 @@ namespace ShipMap
     {
         public AirPipe(ShipMap map) : base(map)
         {
+
         }
 
         protected override ShipElement GetShipElement(ShipMapCell cell)
